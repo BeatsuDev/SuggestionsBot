@@ -12,9 +12,11 @@ class AdministrationCog(commands.Cog):
 
 	@commands.command()
 	@commands.is_owner()
-	@commands.is_dm()
 	async def shell(self, ctx) -> None:
 		"""Toggles a shell sorta - Basically to evaluate python expressions"""
+		# Return if not DM
+		if not ctx.channel.type.private: return
+
 		discord.Embed(title="Activated shell", colour=0x0f0)
 		discord.Embed(title="De-activated shell", colour=0xf00)
 		self.shell = True if not self.shell else False
