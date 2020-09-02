@@ -11,7 +11,7 @@ class AdministrationCog(commands.Cog):
 		self.bot_owner = app_info.owner
 
 	@commands.command()
-	@commands.bot_owner()
+	@commands.is_owner()
 	@commands.is_dm()
 	async def shell(self, ctx) -> None:
 		"""Toggles a shell sorta - Basically to evaluate python expressions"""
