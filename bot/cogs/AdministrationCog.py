@@ -4,10 +4,11 @@ class AdministrationCog(commands.Cog):
 	def __init__(self, bot):
 		self.bot = bot
 		self.shell = False
+		self.bot.loop.create_task(self.__ainit__())
 
-		app_info = await bot.application_info()
+	async def __ainit__(self):
+		app_info = await self.bot.application_info()
 		self.bot_owner = app_info.owner
-
 
 	@commands.command()
 	@commands.bot_owner()
